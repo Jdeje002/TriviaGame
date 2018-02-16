@@ -1,14 +1,20 @@
+
 $(document).ready(function () {
-    
     
     var rightAnswers = 0
     var wrongAnswers = 0
+    var counter = 0
+    var timer = select("#timer")
+    timer.html('0');
     
     function initGame(){
         
-
         // timer
-
+        function timeIt(){
+            counter++;
+            timer.html(counter)
+        }
+        setInterval (timeIt,1000)
         // click button to start timer 
 
         // show quiz
@@ -24,9 +30,6 @@ $(document).ready(function () {
   
   
   
-  
-  
     initGame()
 
-}
-
+})
