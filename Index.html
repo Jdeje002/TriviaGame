@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trivia game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row" id="startScreen">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 text-align center bg-light text-dark">
+                <h1 class="d-flex justify-content-center">Riddle me this?</h1>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2">
+                    <button type="button" class="btn btn-success text-center">Start</button>
+                    </div>
+                     <div class="col-md-5"></div>
+                    <br>
+                    <br>
+                </div>
+                </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row" id= "timer"></div>
+        <div class="row" id="gameScreen" hidden>
+           <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form id="Q1">
+                    Riddle me this?
+                    <br> What super villain once broke Batman's back, leaving him crippled and wheelchair-bound?
+                    <br>
+                    <button id="btn" class="btn btn-danger" value="false">Joker</button>
+                    <button id="btn" class="btn btn-danger" value="false">Robin</button>
+                    <button id="btn" class="btn btn-danger" value="true">Bane</button>
+                    <button id="btn" class="btn btn-danger" value="false">Ra's Al Ghul</button>
+                    <br>
+                </form>
+                <form id="Q2">
+                    Riddle me this?
+                    <br> What were the names of Bruce Wayne's parents?
+                    <br>
+                    <button id="btn" class="btn btn-danger"value="true">Thomas and Martha </button>
+                    <button id="btn" class="btn btn-danger"value="false">Johathen and Martha </button>
+                    <button id="btn" class="btn btn-danger"value="false">Wayne and Kent</button>
+                    <button id="btn" class="btn btn-danger"value="false">Barbra and Richard</button>
+                    <br>
+                    
+                </form>
+                <form id="Q3">
+                    Riddle me this?
+                    <br> The original Batgirl was related to what familiar Batman character?
+                    <br>
+                    <button id="btn" class="btn btn-danger" value="">Tim Drake</button>
+                    <button id="btn" class="btn btn-danger" value="">James Gordon</button>
+                    <button id="btn" class="btn btn-danger" value="">Richard Grayson</button>
+                    <button id="btn" class="btn btn-danger" value="">Bruce </button>
+
+                    <br>
+                </form>
+                <form id="Q4">
+                    Riddle me this?<br>
+                    What was Alfred the butler's original family name?
+                    <br>
+                    <button id="btn" class="btn btn-danger" value="True">Beagle</button>
+                    <button id="btn" class="btn btn-danger" value="false">Jeves</button>
+                    <button id="btn" class="btn btn-danger" value="false">Pennywoth</button>
+                    <button id="btn" class="btn btn-danger" value="false">Smith</button>
+                    <br>
+                </form>
+                <form id="Q5">
+                    Riddle me this?<br>
+                    What was Bat-hound's name?
+                    <br>
+                    <button id="btn" class="btn btn-danger" value="false">Queengit</button>
+                    <button id="btn" class="btn btn-danger" value="True">Ace</button>
+                    <button id="btn" class="btn btn-danger" value="false">King</button>
+                    <button id="btn" class="btn btn-danger" value="false">Jack</button>
+                    <br>
+                    
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <button class"btn btn-danger" id="submitBtn" hidden >Submit</button>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="/assets/javascript/javascript.js"></script>
+
+</body>
+
+</html>
