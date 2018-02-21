@@ -23,23 +23,24 @@
 
     <div class="row">
       <div class="col-md-5"></div>
-      <div id="timer" class="col-md-2">1:00</div>
+      <div id="timer" class="col-md-2"></div>
       <div class="col-md-5"></div>
     </div>
     <br>
     <div id='quiz'></div>
-    <div class='button' id='next'>Next</a>
+    <div class='btn btn-success button' id='next'>Next</a>
     </div>
-    <div class='button' id='prev'>Prev</a>
+    <div class='btn btn-success button' id='prev'>Prev</a>
     </div>
-    <div class='button' id='start'>Start Over</a>
+    <div class='btn btn-success button' id='start'>Start Over</a>
     </div>
   </div>
 
   <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
   <script type="text/javascript" src='questions.json'></script>
   <script>
-    (function () {
+
+    function intGame() {
       var questions = [{
         question: "What super villain once broke Batman's back, leaving him crippled and wheelchair-bound?",
         choices: ["Joker", "Robin", "Bane", "Ra's Al Ghul"],
@@ -62,19 +63,24 @@
         correctAnswer: 1
       }];
 
-      var questionCounter = 0; 
-      var selections = []; 
-      var quiz = $('#quiz'); 
+      var questionCounter = 0; //Tracks question number
+      var selections = []; //Array containing user choices
+      var quiz = $('#quiz'); //Quiz div object
 
       // Display initial question
-      displayNext();  
+      displayNext();
+
+      // Click handler for the 'next' button
       $('#next').on('click', function (e) {
         e.preventDefault();
+
+        // Suspend click listener during fade animation
         if (quiz.is(':animated')) {
-        return false;
+          return false;
         }
         choose();
 
+        // If no user selection, progress is stopped
         if (isNaN(selections[questionCounter])) {
           alert('Please make a selection!');
         } else {
@@ -83,6 +89,7 @@
         }
       });
 
+      // Click handler for the 'prev' button
       $('#prev').on('click', function (e) {
         e.preventDefault();
 
@@ -94,7 +101,7 @@
         displayNext();
       });
 
-      o
+      // Click handler for the 'Start Over' button
       $('#start').on('click', function (e) {
         e.preventDefault();
 
@@ -105,18 +112,38 @@
         selections = [];
         displayNext();
         $('#start').hide();
-
       });
 
-      
-      $('.button').on('mouseenter', function () {
-        $(this).addClass('active');
-      });
-      $('.button').on('mouseleave', function () {
-        $(this).removeClass('active');
-      });
+      // timer
 
-      
+      document.getElementById('timer').innerHTML =
+        01 + ":" + 00;
+      startTimer();
+
+      function startTimer() {
+        var presentTime = document.getElementById('timer').innerHTML;
+        var timeArray = presentTime.split(/[:]+/);
+        var m = timeArray[0];
+        var s = checkSecond((timeArray[1] - 1));
+        if (s == 59) { m = m - 1 }
+        //if(m<0){alert('timer completed')}
+
+        document.getElementById('timer').innerHTML =
+          m + ":" + s;
+        setTimeout(startTimer, 1000);
+      }
+
+      function checkSecond(sec) {
+        if (sec < 10 && sec >= 0) 
+        { sec = "0" + sec };
+        
+        if (sec < 0) 
+        { sec = "59" };
+        return sec;
+      }
+
+
+      //answer selections
       function createQuestionElement(index) {
         var qElement = $('<div>', {
           id: 'question'
@@ -134,7 +161,7 @@
         return qElement;
       }
 
-      
+      // Creates a list of the answer 
       function createRadios(index) {
         var radioList = $('<ul>');
         var item;
@@ -149,11 +176,12 @@
         return radioList;
       }
 
+      // Reads array
       function choose() {
         selections[questionCounter] = +$('input[name="answer"]:checked').val();
       }
 
-     
+
       function displayNext() {
         quiz.fadeOut(function () {
           $('#question').remove();
@@ -165,7 +193,7 @@
               $('input[value=' + selections[questionCounter] + ']').prop('checked', true);
             }
 
-           
+            // Controls display of 'prev' button
             if (questionCounter === 1) {
               $('#prev').show();
             } else if (questionCounter === 0) {
@@ -182,28 +210,7 @@
           }
         });
       }
-      document.getElementById('timer').innerHTML =
-        01 + ":" + 00;
-      startTimer();
 
-      function startTimer() {
-        var presentTime = document.getElementById('timer').innerHTML;
-        var timeArray = presentTime.split(/[:]+/);
-        var m = timeArray[0];
-        var s = checkSecond((timeArray[1] - 1));
-        if (s == 59) { m = m - 1 }
-        
-
-        document.getElementById('timer').innerHTML =
-          m + ":" + s;
-        setTimeout(startTimer, 1000);
-      }
-
-      function checkSecond(sec) {
-        if (sec < 10 && sec >= 0) { sec = "0" + sec }; 
-        if (sec < 0) { sec = "59" };
-        return sec;
-      }
 
       function displayScore() {
         var score = $('<p>', { id: 'question' });
@@ -219,7 +226,8 @@
           questions.length + ' right!!!');
         return score;
       }
-    })();
+    }
+    intGame();
   </script>
 </body>
 
